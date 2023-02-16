@@ -1,0 +1,163 @@
+﻿@model IEnumerable<EmployeeAppCore.Core.Models.EmployeeDetails>
+@{
+    ViewData["Title"] = "ListAllEmpolyeeDetail";
+    int i = 1;
+}
+<style>
+    html,
+    body,
+    .intro {
+        height: 100%;
+    }
+
+    table td,
+    table th {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .card {
+        border-radius: .5rem;
+    }
+</style>
+
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+    <div class=" text-right">
+        <button type="button" class="btn btn-secondary" onclick="Add();">Add</button>
+    </div>
+    <section class="intro">
+        <div class="bg-image h-100" style="background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img4.jpg');">
+            <div class="mask d-flex align-items-center h-100" style="background-color: rgba(25, 185, 234,.25);">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Sl .No</th>
+                                                    <th scope="col">First Name </th>
+                                                    <th scope="col">Second Name</th>
+                                                    <th scope="col">Date of Joining</th>
+                                                    <th scope="col">Age </th>
+                                                    <th scope="col">Experience </th>
+                                                    <th scope="col">Contact Number </th>
+                                                    <th scope="col">Address </th>
+                                                    <th scope="col">Working Location </th>
+                                                    <th scope="col">Empolyee LogIn Id </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if (Model != null)
+                                                {
+                                                    foreach (var item in Model)
+                                                    {
+
+
+                                                        <tr>
+
+                                                            <td>
+                                                                <span class="text-danger">
+                                                                    @i
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span class="text-success">
+                                                                    @Html.DisplayFor(m => item.FirstName)
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span class="text-success">
+                                                                    @Html.DisplayFor(m => item.SecondName)
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span class="text-success">
+                                                                    @Html.DisplayFor(m => item.DateOfJoining)
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span class="text-danger">
+                                                                    @Html.DisplayFor(m => item.Age)
+                                                                </span>
+                                                            </td> 
+                                                            <td>
+                                                                <span class="text-danger">
+                                                                    @Html.DisplayFor(m => item.Experience)
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span class="text-success">
+                                                                    @Html.DisplayFor(m => item.ContactNumber)
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span class="text-success">
+                                                                    @Html.DisplayFor(m => item.Adress)
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span class="text-success">
+                                                                    @Html.DisplayFor(m => item.Location)
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span class="text-danger">
+                                                                    <button type="button" class='far fa-edit' style='font-size:20px;color:green' onclick="edit(@item.WorkerId)"></button>
+                                                                    <button type="button" class='far fa-trash-alt' style='font-size:20px;color:red' onclick="Delete(@item.WorkerId)"></button>
+                                                                    <button type="button" onclick="EnableEdit(@item.WorkerId)">Enable</button>
+                                                                    <button type="button" class='fas fa-eye' style='font-size:20px;color:red' onclick="View(@item.WorkerId)"></button>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        i++;
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+
+</body>
+<script>
+    function Add() {
+        window.location.href = "/Employee/GetEmpolyeeDetails";
+    }
+
+    function edit(EmpId) {
+        window.location.href = "/Employee/GetEmpolyeeDetails?EmpId=" + EmpId;
+    }
+
+    function EnableEdit(EmpId) {
+        window.location.href = "/Employee/EnableUpdateOption?EmpId=" + EmpId;
+    }
+    function View(EmpId) {
+        window.location.href = "/Employee/_ViewDetails?EmpId=" + EmpId;
+    }
+
+    function Delete(EmpId) {
+        if (confirm("Are sure you want dlt this item")) {
+            window.location.href = "/Employee/DeleteDetails?EmpId=" + EmpId;
+        }
+    }
+
+
+
+</script>
+
+

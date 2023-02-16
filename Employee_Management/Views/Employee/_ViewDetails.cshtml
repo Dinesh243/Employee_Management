@@ -1,0 +1,83 @@
+﻿@model IEnumerable<EmployeeAppCore.Core.Models.EmployeeDetails>
+@{
+    ViewData["Title"] = "ListParticularEmpolyeeDetail";
+    int i = 1;
+}
+
+<h1>Empolyee Details</h1>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+
+
+    <table>
+
+        <tr class="table-bordered">
+            <th>Sl .No </th>
+            <th>First Name </th>
+            <th>Second Name</th>
+            <th>Date of Joining</th>
+            <th>Age </th>
+            <th>Experience </th>
+            <th>Contact Number</th>
+            <th>Address</th>
+            <th>Working Location</th>
+            <th>Empolyee LogIn Id</th>
+
+        </tr>
+
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                @Html.HiddenFor(m => item.WorkerId)
+                <tr>
+                    <td>
+                        @i
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(m => item.FirstName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(m => item.SecondName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(m => item.DateOfJoining)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(m => item.Age)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(m => item.Experience)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(m => item.ContactNumber)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(m => item.Adress)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(m => item.Location)
+                    </td>
+
+
+                </tr>
+                i++;
+            }
+        }
+
+
+    </table>
+
+</body>

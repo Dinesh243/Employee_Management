@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeeAppCore.Core\EmployeeAppCore.Core.csproj" />
+    <ProjectReference Include="..\EmployeeAppCore.Resources\EmployeeAppCore.Resources.csproj" />
+    <ProjectReference Include="..\EmployeeAppCore.Utilities\EmployeeAppCore.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>
